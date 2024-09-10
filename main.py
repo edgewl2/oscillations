@@ -4,14 +4,16 @@ from graph import graph_oscillation
 
 
 def main():
-    # Definir el tiempo de 0 a 2 segundos
-    t = np.linspace(0, 2, 1000)
+    # Parámetros
+    u = 1  # Ajusta según sea necesario
+    times = np.linspace(0, 2, 1000)  # Tiempo de 0 a 2 segundos
 
-    # Calcular la oscilación
-    y = calculate_oscillation(t)
+    # Definir valores de n
+    ns = [4, 15, 30]
+    ys = [calculate_oscillation(times, u, n) for n in ns]
 
     # Graficar el resultado
-    graph_oscillation(t, y)
+    graph_oscillation(times, ys, ns)
 
 
 
