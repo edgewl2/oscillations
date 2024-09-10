@@ -13,7 +13,7 @@ def Ao():
 def An(n):
     """
     Coeficiente An de la expansión de Fourier
-    :param n int - El número del armónico (debe ser >= 1).
+    :param n int: El número del armónico (debe ser >= 1).
     :return float
     """
     return (1 / (n**2)) * (-1)**n
