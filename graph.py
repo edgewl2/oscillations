@@ -1,23 +1,30 @@
 import matplotlib.pyplot as plt
+import numpy as np
+
+from constants import PI, X_MIN, NUM_POINTS
+from oscillation import generate_oscillation
 
 
-def graph_oscillation(t, ys, ns):
+def graph_oscillation(values, cycles):
     """
-    Genera la gráfica de la oscilación en función del tiempo.
-
-    :param t: Array de tiempos
-    :param y: Array de desplazamientos
-    :param n: Número máximo de términos en la serie
+    Grafica las oscilaciones basadas en la serie de Fourier para diferentes valores de N
+    :param values list: Una lista de enteros donde cada entero representa el número de términos (N)
+    :param cycles int: Número de ciclos a mostrar en el gráfico
     """
-    n_plots = len(ns)
-    fig, axes = plt.subplots(n_plots, 1, figsize=(10, 8), sharex=True)
+    x_max = cycles * (2 * PI)  # Ajusta X_MAX para cubrir más ciclos
+    x = np.linspace(X_MIN, x_max, NUM_POINTS)
 
-    for i in range(n_plots):
-        axes[i].plot(t, ys[i])
-        axes[i].set_title(f"Oscilación con {ns[i]} términos")
-        axes[i].set_ylabel("Desplazamiento")
-        axes[i].grid(True)
+    fig, axs = plt.subplots(len(values), 1, figsize=(12, 4 * len(values)))
+    fig.suptitle('Series de Fourier para diferentes números de términos (N)')
 
-    axes[-1].set_xlabel("Tiempo (s)")
+    for i, N in enumerate(values):
+        y = generate_oscillation(x, N)
+        axs[i].plot(x, y)
+        axs[i].set_title(f'N = {N} términos')
+        axs[i].set_xlabel('x')
+        axs[i].set_ylabel('f(x)')
+        axs[i].grid(True)
+        axs[i].set_xlim(X_MIN, x_max)
+
     plt.tight_layout()
     plt.show()

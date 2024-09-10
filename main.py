@@ -1,19 +1,16 @@
-import numpy as np
-from oscillation import calculate_oscillation
 from graph import graph_oscillation
 
 
 def main():
-    # Parámetros
-    u = 1  # Ajusta según sea necesario
-    times = np.linspace(0, 2, 1000)  # Tiempo de 0 a 2 segundos
+    # Solicitar número de ciclos
+    cycles = int(input('Ingrese el número de ciclos a mostrar en el gráfico: '))
 
-    # Definir valores de n
-    ns = [4, 15, 30]
-    ys = [calculate_oscillation(times, u, n) for n in ns]
+    # Solicitar términos N
+    terms_input = input('Ingrese los términos N separados por comas (por ejemplo, 4,15,30): ')
+    terms = [int(t) for t in terms_input.split(',')]
 
     # Graficar el resultado
-    graph_oscillation(times, ys, ns)
+    graph_oscillation(terms, cycles)
 
 
 
