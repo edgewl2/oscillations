@@ -4,6 +4,8 @@
 Actualmente este proyecto genera visualizaciones de series de Fourier para diferentes números de términos (N), 
 con enfoque a aquellas que usan **coseno** o conocidas como **onda periódica** o **aproximada a onda cuadrada**.
 
+![demo](https://github.com/user-attachments/assets/ba0c824d-8778-4dff-abe5-7c6395376a75)
+
 ### Requisitos:
 - Python 3.7+
 - NumPy
